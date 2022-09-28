@@ -1,5 +1,7 @@
 package com.api.book.bootrestbook.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,6 +15,7 @@ public class Book {
     private int id;
     private String title;
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Author author;
 
     public Author getAuthor() {
@@ -22,6 +25,8 @@ public class Book {
     public void setAuthor(Author author) {
         this.author = author;
     }
+
+
 
     public Book() {
 
@@ -49,13 +54,6 @@ public class Book {
         this.title = title;
     }
 
-    public Author  getAuther() {
-        return author;
-    }
-
-    public void setAuther(Author author) {
-        this.author = author;
-    }
 
     @Override
     public String toString() {
