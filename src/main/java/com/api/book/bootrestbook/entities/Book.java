@@ -12,16 +12,25 @@ public class Book {
     @Column(name="book_id")
     private int id;
     private String title;
-    private String auther;
+    @OneToOne(cascade = CascadeType.ALL)
+    private Author author;
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
     public Book() {
 
     }
 
-    public Book(int id, String title, String auther) {
+    public Book(int id, String title, Author  author) {
         this.id = id;
         this.title = title;
-        this.auther = auther;
+        this.author  = author;
     }
 
     public int getId() {
@@ -40,11 +49,22 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuther() {
-        return auther;
+    public Author  getAuther() {
+        return author;
     }
 
-    public void setAuther(String auther) {
-        this.auther = auther;
+    public void setAuther(Author author) {
+        this.author = author;
     }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", auther=" + author +
+                '}';
+    }
+
+
 }
