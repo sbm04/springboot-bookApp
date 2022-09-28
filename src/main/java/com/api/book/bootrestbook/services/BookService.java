@@ -24,9 +24,14 @@ public class BookService {
     }
     //get single book by id
     public Book getBookById(int id){
-    //  Book book = null;
+        Book book = null;
     //  book = list.stream().filter(e->e.getId()==id).findFirst().get();
-        Book book =this.bookRepository.findById(id);
+        try{
+             book =this.bookRepository.findById(id);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
         return  book;
     }
     //add book
@@ -37,7 +42,7 @@ public class BookService {
 
     }
     //update book
-    public void upDate(Book book,int bookid){
+    public void updateBook(Book book,int bookid){
 //        list= list.stream().map(b->{
 //             if(b.getId()==bookid){
 //                 b.setTitle(book.getTitle());
